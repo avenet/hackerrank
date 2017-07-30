@@ -1,0 +1,1 @@
+for i in range(1, 101):print (i%3==0 and 'Fizz' or '')+(i%5==0 and 'Buzz' or '') or i
