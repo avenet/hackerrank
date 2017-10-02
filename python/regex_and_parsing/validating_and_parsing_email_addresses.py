@@ -5,7 +5,7 @@ import re
 emails_to_validate = int(input())
 
 EMAIL_RE = re.compile(
-    r'^[a-zA-Z][a-zA-Z0-9\._-]*@[a-zA-Z]+\.[a-zA-Z]{1,3}$'
+    r'^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z]+\.[a-zA-Z]{1,3}$'
 )
 
 
