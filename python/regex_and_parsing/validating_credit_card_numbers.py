@@ -5,7 +5,7 @@ CREDIT_CARD_RE = re.compile(
 )
 
 INVALID_NUMBERS_RE = re.compile(
-    r'0000|1111|2222|3333|4444|5555|6666|7777|8888|9999'
+    r'(\d)(?=\1{3})'
 )
 
 credit_card_numbers = int(input())
