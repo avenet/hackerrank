@@ -30,6 +30,7 @@ def wrapper(f):
 
     return fun
 
+
 @wrapper
 def sort_phone(l):
     print(*sorted(l), sep='\n')
