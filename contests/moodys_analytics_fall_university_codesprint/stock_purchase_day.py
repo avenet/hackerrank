@@ -1,46 +1,46 @@
 #!/bin/python3
 
 
-def stock_purchase_day(stock_prices, xi, buckets):
+def stock_purchase_day(stock_prices, price, purchase_buckets):
     begin = None
     end = None
-    
-    for bucket_begin, bucket_end, min_bucket_value in buckets:
-        if min_bucket_value <= xi:
+
+    for bucket_begin, bucket_end, min_bucket_value in purchase_buckets:
+        if min_bucket_value <= price:
             begin, end = bucket_begin, bucket_end
             break
-    
+
     if begin is None:
         return -1
-    
+
     i = end
-    
+
     for stock_price in reversed(stock_prices[begin: end]):
-        if stock_price <= xi:
+        if stock_price <= price:
             return i
         i -= 1
-    
+
     return -1
 
 
-def build_buckets(numbers, bucket_size):
-    buckets = []
+def build_buckets(items, bucket_size):
+    bucket_result = []
     ini = 0
-    n = len(numbers)
-    
-    while ini < n:
+    item_count = len(items)
+
+    while ini < item_count:
         end = ini + bucket_size
-        
-        if end >= n:
-            end = n
-        
-        current_min = min(numbers[ini: end])
-        buckets.append((ini, end, current_min))
+
+        if end >= item_count:
+            end = item_count
+
+        current_min = min(items[ini: end])
+        bucket_result.append((ini, end, current_min))
         ini += bucket_size
-    
-    buckets.reverse()
-    
-    return buckets
+
+    bucket_result.reverse()
+
+    return bucket_result
 
 
 n = int(input().strip())
