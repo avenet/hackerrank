@@ -3,12 +3,12 @@ import sys
 
 def get_leaderboard(player_scores):
     result = []
-
+    
     leaderboard_scores = sorted(
         player_scores,
         reverse=True
     )
-
+    
     previous_score = sys.maxsize
     
     for leaderboard_score in leaderboard_scores:
@@ -20,22 +20,49 @@ def get_leaderboard(player_scores):
     return result
 
 
+def binary_search(leaderboard_values, score):
+    i = 0
+    j = len(leaderboard_values) - 1
+    
+    if score <= leaderboard_values[-1]:
+        return j
+    elif score == leaderboard_values[0]:
+        return 0
+    elif score > leaderboard_values[0]:
+        return -1
+    
+    while i < j:
+        mid = (j + i) // 2
+        middle_element = leaderboard_values[mid]
+        
+        if mid == i:
+            return i
+        
+        if score > middle_element:
+            j = mid
+        elif score < middle_element:
+            i = mid
+        else:
+            return mid
+    
+    if leaderboard_values[j] > score:
+        return j
+    
+    return i
+
+
 def get_leaderboard_position(current_leaderboard, target_score):
-    min_value = current_leaderboard[-1]
-
-    if target_score == min_value:
-        return len(current_leaderboard)
-    elif target_score < min_value:
-        return 1 + len(leaderboard)
-
-    position = 1
-
-    for leader_score in current_leaderboard:
-        if target_score >= leader_score:
-            return position
-        position += 1
-
-    return position
+    position = binary_search(
+        current_leaderboard,
+        target_score
+    )
+    
+    result = 1 + position
+    
+    if current_leaderboard[position] == target_score:
+        return result
+    
+    return 1 + result
 
 
 n = int(input().strip())
