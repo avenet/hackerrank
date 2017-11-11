@@ -1,10 +1,10 @@
 def get_common_topics(first_topics, second_topics):
     result = 0
-    
+
     for i in range(len(first_topics)):
         if first_topics[i] or second_topics[i]:
             result += 1
-    
+
     return result
 
 
@@ -26,7 +26,7 @@ for i in range(n):
             topic[i],
             topic[j]
         )
-        
+
         if current_common_topics > max_common_topics:
             max_common_topics = current_common_topics
             teams_with_max_topics = 1
