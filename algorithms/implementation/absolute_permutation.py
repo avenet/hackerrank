@@ -1,6 +1,3 @@
-#!/bin/python3
-
-
 def get_permutation(n, k):
     if k == 0:
         return ' '.join(map(str, range(1, n+1)))
@@ -46,6 +43,7 @@ def get_permutation(n, k):
         return '-1'
 
     return ' '.join(result)
+
 
 t = int(input().strip())
 
