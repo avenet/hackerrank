@@ -16,6 +16,7 @@ def super_reduced_string(str_value):
 
     return result
 
+
 s = input().strip()
 
 print(super_reduced_string(s))
